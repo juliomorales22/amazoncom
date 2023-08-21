@@ -47,11 +47,11 @@ public class amazontest {
         driver.get("https://www.amazon.es/b/?_encoding=UTF8&node=667049031");
         WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated((By.xpath("//input[contains(@id,'twotabsearchtextbox')]")))));
         String categoryNameTitle = driver.findElement(By.xpath("//div[contains(@class,'pageBanner')]/h1/span")).getText();
-
         Assertions.assertTrue(categoryNameTitle.contains("Inform"));
+
         // 5 assertion change need a different xpath
-        String titleMainCategory = driver.findElement(By.xpath("//h2[not(contains(@class,'a'))]")).getText();
-        Assertions.assertFalse(titleMainCategory.contains("destacadas"));
+        String titleMainCategories = driver.findElement(By.xpath("//h2[not(contains(@class,'a'))]")).getText();
+        Assertions.assertFalse(titleMainCategories.contains("destacadas"));
 
 
     }
