@@ -38,4 +38,4 @@ build/
 .DS_Store
 
 #### file code ignore
-/.idea/codeStyle/codeStyleConfig.xml
+/amazoncom/.idea/codeStyle/codeStyleConfig.xml
