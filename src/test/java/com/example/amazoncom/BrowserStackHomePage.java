@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class BrowserStackHomePage {
-
   WebDriver driver;
   @FindBy(xpath = "//input[contains(@id,'twotabsearchtextbox')]")
   WebElement inputtext;
@@ -18,6 +17,8 @@ public class BrowserStackHomePage {
   WebElement Header;
   @FindBy(xpath = "//a[contains(@data-csa-c-slot-id,\"nav_cs_5\")]")
   WebElement getOffer;
+  @FindBy(xpath = "//input[@id=\"sp-cc-accept\"]")
+  WebElement acceptcookies;
 
   public BrowserStackHomePage(WebDriver driver) {
     this.driver = driver;
@@ -27,6 +28,10 @@ public class BrowserStackHomePage {
   public void veryStringOffer() {
     String getStringOffer = getOffer.getText();
     assertEquals(getStringOffer, "Ofertas");
+  }
+
+  public void clickOnacceptcookies() {
+    acceptcookies.click();
   }
 
   public void clickOnGetOffer() {

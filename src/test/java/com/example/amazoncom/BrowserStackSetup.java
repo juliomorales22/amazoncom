@@ -23,6 +23,7 @@ public class BrowserStackSetup {
   public void navigate_to_homepage_click_on_getstarted() {
     objBrowserStackHomePage = new BrowserStackHomePage(driver);
     objBrowserStackHomePage.veryStringOffer();
+    objBrowserStackHomePage.clickOnacceptcookies();
     objBrowserStackHomePage.clickOnGetOffer();
   }
 
