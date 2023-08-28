@@ -16,42 +16,32 @@ import java.time.Duration;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class amazontest {
     public WebDriver driver;
+    MainPage mainPage;
+
 
     @BeforeAll
     public void setupBrowser() {
-        System.out.println("Test starts in amazon.es");
+       // System.out.println("Test starts in amazon.es");
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("incognito");
+        //chromeOptions.addArguments("incognito");
         driver = new ChromeDriver(chromeOptions);
-        driver.manage().window().maximize();
-        driver.get("https://www.amazon.es/");
+        driver.get("https://www.amazon.com/");
         this.driver = driver;
         WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated((By.xpath("//input[contains(@id,'twotabsearchtextbox')]")))));
     }
-
+    @AfterEach
+    public void teardown() {
+        driver.quit();
+    }
     @Test
-    public void myTest() {
+    public void sarch() {
         //   WebDriver driver=this.driver;
         // 1 assertion
-        String ActualTitle = driver.getTitle();
-        Assertions.assertTrue(ActualTitle.contains("Amazon.es"));
-        /*  */ // 2 assertion
-        WebElement checkInpuText = driver.findElement(By.xpath("//input[contains(@id,'twotabsearchtextbox')]"));
-        Assertions.assertTrue(checkInpuText.isDisplayed());
-        // 3 assertion
-        WebElement checkInputHidden = driver.findElement(By.xpath("//input[contains(@name,'glow-validation-token') ]"));
-        Assertions.assertFalse(checkInputHidden.isDisplayed());
-        // 4 assertion
-
-        driver.get("https://www.amazon.es/b/?_encoding=UTF8&node=667049031");
-        WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated((By.xpath("//input[contains(@id,'twotabsearchtextbox')]")))));
-        String categoryNameTitle = driver.findElement(By.xpath("//div[contains(@class,'pageBanner')]/h1/span")).getText();
-        Assertions.assertTrue(categoryNameTitle.contains("Inform"));
-
-        // 5 assertion change need a different xpath
-        String titleMainCategories = driver.findElement(By.xpath("//h2[not(contains(@class,'a'))]")).getText();
-        Assertions.assertFalse(titleMainCategories.contains("destacadas"));
+        mainPage.searchField.sendKeys("Selenium");
+        mainPage.searchButton.click();
+        Assertions.assertEquals("Selenium", mainPage.searchField.getAttribute("value"));
+//    Assertions.assertFalse(titleMainCategories.contains("destacadas"));
 
 
     }
