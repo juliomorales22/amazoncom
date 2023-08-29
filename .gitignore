@@ -32,4 +32,4 @@ build/
 .DS_Store
 
 #### file code ignore
-/allure-results/
+allure-results/
