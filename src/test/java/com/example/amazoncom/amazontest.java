@@ -21,11 +21,12 @@ public class amazontest {
     public void setupBrowser() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        //chromeOptions.addArguments("incognito");
+        chromeOptions.addArguments("incognito");
+        //chromeOptions.addArguments("headless");
         driver = new ChromeDriver(chromeOptions);
         driver.get(WEB);
-
-        WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated((By.xpath("//input[contains(@id,'twotabsearchtextbox')]")))));
+        mainPage = new AmazonMainPage(driver);
+ //       WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated((By.xpath("//input[contains(@id,'twotabsearchtextbox')]")))));
     }
     @AfterEach
     public void teardown() {
