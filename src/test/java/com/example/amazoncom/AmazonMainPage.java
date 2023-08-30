@@ -1,4 +1,5 @@
 package com.example.amazoncom;
+
 import static org.testng.Assert.assertEquals;
 
 import java.time.Duration;
@@ -11,20 +12,28 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AmazonMainPage {
+
   WebDriver driver;
   @FindBy(id = "twotabsearchtextbox")
-  WebElement  searchField;
+  WebElement searchField;
   @FindBy(id = "nav-search-submit-button")
   WebElement searchButton;
-  final static String WEB="https://www.amazon.es/";
-public AmazonMainPage(WebDriver driver) {
-  this.driver=driver;
-  driver.get(WEB);
-  WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(30)).until(
-      ExpectedConditions.presenceOfElementLocated((By.xpath("//input[contains(@id,'twotabsearchtextbox')]")))));
-  PageFactory.initElements(driver,this);
-}
- public String getSearchFieldValue(){
-   return searchField.getAttribute("value");
- }
+  final static String URL_WEB_AMAZON = "https://www.amazon.es/";
+
+  public AmazonMainPage(WebDriver driver) {
+    this.driver = driver;
+    browserDriver(URL_WEB_AMAZON);
+     PageFactory.initElements(driver, this);
+  }
+  public void browserDriver(String URL_WEB_AMAZON){
+    driver.get(URL_WEB_AMAZON);
+    WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(30)).until(
+        ExpectedConditions.presenceOfElementLocated(
+            (By.xpath("//input[contains(@id,'twotabsearchtextbox')]")))));
+
+  }
+
+  public String getSearchFieldValue() {
+    return searchField.getAttribute("value");
+  }
 }

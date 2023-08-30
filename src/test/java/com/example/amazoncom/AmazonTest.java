@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import org.openqa.selenium.By;
-
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AmazonTest {
     public WebDriver driver;
@@ -22,9 +21,9 @@ public class AmazonTest {
         driver = new ChromeDriver(chromeOptions);
         mainPage = new AmazonMainPage(driver);
     }
-    @AfterEach
+    @AfterAll
     public void teardown() {
-        driver.quit();
+       driver.quit();
     }
     @Test
     public void searchProductTest() {
@@ -33,4 +32,4 @@ public class AmazonTest {
         mainPage.searchButton.click();
         Assertions.assertEquals("Selenium", mainPage.getSearchFieldValue());
     }
-}//
+}
