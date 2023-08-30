@@ -11,7 +11,7 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class amazonTest {
+public class AmazonTest {
     public WebDriver driver;
     AmazonMainPage mainPage;
     @BeforeAll
@@ -21,14 +21,13 @@ public class amazonTest {
         chromeOptions.addArguments("incognito");
         driver = new ChromeDriver(chromeOptions);
         mainPage = new AmazonMainPage(driver);
-        WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated((By.xpath("//input[contains(@id,'twotabsearchtextbox')]")))));
     }
     @AfterEach
     public void teardown() {
         driver.quit();
     }
     @Test
-    public void search() {
+    public void searchProductTest() {
         // 1 assertion
         mainPage.searchField.sendKeys("Selenium");
         mainPage.searchButton.click();
