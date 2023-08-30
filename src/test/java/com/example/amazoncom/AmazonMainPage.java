@@ -16,21 +16,20 @@ public class AmazonMainPage {
   WebDriver driver;
   @FindBy(id = "twotabsearchtextbox")
   WebElement searchField;
+
   @FindBy(id = "nav-search-submit-button")
   WebElement searchButton;
   final static String URL_WEB_AMAZON = "https://www.amazon.es/";
 
   public AmazonMainPage(WebDriver driver) {
     this.driver = driver;
-    browserDriver(URL_WEB_AMAZON);
      PageFactory.initElements(driver, this);
   }
-  public void browserDriver(String URL_WEB_AMAZON){
+
+  public void useDriver(){
     driver.get(URL_WEB_AMAZON);
     WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(30)).until(
-        ExpectedConditions.presenceOfElementLocated(
-            (By.xpath("//input[contains(@id,'twotabsearchtextbox')]")))));
-
+        ExpectedConditions.visibilityOf(searchField)));
   }
 
   public String getSearchFieldValue() {

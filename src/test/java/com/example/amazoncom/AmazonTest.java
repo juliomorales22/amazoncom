@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import org.openqa.selenium.By;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AmazonTest {
     public WebDriver driver;
@@ -20,11 +21,14 @@ public class AmazonTest {
         chromeOptions.addArguments("incognito");
         driver = new ChromeDriver(chromeOptions);
         mainPage = new AmazonMainPage(driver);
+        mainPage.useDriver();
     }
+
     @AfterAll
     public void teardown() {
        driver.quit();
     }
+
     @Test
     public void searchProductTest() {
         // 1 assertion
