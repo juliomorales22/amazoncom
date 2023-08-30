@@ -31,6 +31,6 @@ public class AmazonTest {
         // 1 assertion
         mainPage.searchField.sendKeys("Selenium");
         mainPage.searchButton.click();
-        Assertions.assertEquals("Selenium", mainPage.textChecker());
+        Assertions.assertEquals("Selenium", mainPage.getSearchFieldValue());
     }
 }//

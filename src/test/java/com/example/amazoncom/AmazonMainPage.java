@@ -24,8 +24,7 @@ public AmazonMainPage(WebDriver driver) {
       ExpectedConditions.presenceOfElementLocated((By.xpath("//input[contains(@id,'twotabsearchtextbox')]")))));
   PageFactory.initElements(driver,this);
 }
-
- public String textChecker(){
+ public String getSearchFieldValue(){
    return searchField.getAttribute("value");
  }
 }
