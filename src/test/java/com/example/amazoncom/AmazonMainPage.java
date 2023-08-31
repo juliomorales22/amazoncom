@@ -26,10 +26,9 @@ public class AmazonMainPage {
     PageFactory.initElements(driver, this);
   }
 
-  public void useDriver() {
+  public void openHomePage() {
     driver.get(URL_WEB_AMAZON);
-    WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(30)).until(
-        ExpectedConditions.visibilityOf(searchField)));
+    WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(searchField)));
   }
 
   public String getSearchFieldValue() {
