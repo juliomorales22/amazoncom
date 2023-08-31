@@ -23,10 +23,10 @@ public class AmazonMainPage {
 
   public AmazonMainPage(WebDriver driver) {
     this.driver = driver;
-     PageFactory.initElements(driver, this);
+    PageFactory.initElements(driver, this);
   }
 
-  public void useDriver(){
+  public void useDriver() {
     driver.get(URL_WEB_AMAZON);
     WebElement waiting = (new WebDriverWait(driver, Duration.ofSeconds(30)).until(
         ExpectedConditions.visibilityOf(searchField)));
