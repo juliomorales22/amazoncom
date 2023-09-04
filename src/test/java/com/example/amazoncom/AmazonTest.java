@@ -20,7 +20,6 @@ public class AmazonTest {
   public WebDriver driver;
   AmazonMainPage mainPage;
 
-
   @Given("Obtain the content a website: amazon.es")
   @BeforeAll
   public void visitAmazon() {
@@ -35,37 +34,33 @@ public class AmazonTest {
   @When("When it searches 'selenium' and checks the assertion of 'Selenium' in the search box")
   @Test
   @Order(1)
-  public void searchAndCheckTheAssersion() {
+  public void searchAndCheckTheAAssertions() {
     // 1 assertion
     mainPage.searchField.sendKeys("Selenium");
     mainPage.searchButton.click();
     Assertions.assertThat(mainPage.getSearchFieldValue())
         .as("Message Error: Word selenium not found").isEqualTo("Selenium");
-
   }
-
 
   @And("Click link to cart and Check the assertion 'Tu cesta de Amazon est")
   @Test
   @Order(3)
-  public void visitLinkOfferAndCheckTitle() {
+  public void visitLinkCartCheckItIsEmpty() {
     // 3 assertion
     mainPage.linkCart.click();
     Assertions.assertThat(mainPage.emptyCartMessage.getText())
         .as("Failure message: Offer doesn't appear").containsIgnoringCase("Tu cesta de Amazon est");
-
   }
 
   @And("Click link to cart and check the assertion of 'con Amazon Recargas'")
   @Test
   @Order(2)
-  public void clickToCartAndCheckOffers() {
+  public void clickToCartAndCheckExistAmazonRecargas() {
     // 2 assertion
     mainPage.linkCart.click();
     Assertions.assertThat(mainPage.textAmazonRecargas.getText())
         .as("Failure message: Today Offer doesn't appear")
         .containsIgnoringCase("con Amazon Recargas");
-
   }
 
   @Then("Then It will close all browser drivers which have been opened")
