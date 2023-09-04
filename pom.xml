@@ -23,9 +23,16 @@
         <org.assertj.version>3.24.2</org.assertj.version>
         <org.apache.maven.plugins.version>2.22.2</org.apache.maven.plugins.version>
         <io.qameta.allure.version>2.12.0</io.qameta.allure.version>
+        <io.cucumber.version>7.13.0</io.cucumber.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${io.cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
